@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Animator animator;
 
+    private float moveSpeed = 4f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,8 @@ public class PlayerController : MonoBehaviour
         //  Direction in a normalised vector
         Vector3 dir = new Vector3(horizontal, 0f, vertical).normalized;
 
+        Vector3 velocity = moveSpeed * Time.deltaTime * dir;
+
         //  Check if there is movement
         if (dir.magnitude >= 0.1f)
         {
@@ -39,6 +43,10 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(dir);
 
             //  Move
+            controller.Move(velocity);
         }
+
+        // Make a animation reference to velocity value
+        animator.SetFloat("Speed", velocity.magnitude);
     }
 }
