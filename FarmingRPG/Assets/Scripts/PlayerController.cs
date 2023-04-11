@@ -45,5 +45,8 @@ public class PlayerController : MonoBehaviour
             //  Move
             controller.Move(velocity);
         }
+
+        // Make a animation reference to velocity value
+        animator.SetFloat("Speed", velocity.magnitude);
     }
 }
