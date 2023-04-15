@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
 
     private float moveSpeed = 4f;
 
+    [Header("Movement System")]
+    public float walkSpeed = 4f;
+    public float runSpeed = 8f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,18 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = new Vector3(horizontal, 0f, vertical).normalized;
 
         Vector3 velocity = moveSpeed * Time.deltaTime * dir;
+
+        //  Check if sprint key is pressed down
+        if (Input.GetButton("Sprint"))
+        {
+            //  Set the animation to run and increase movespeed
+            moveSpeed = runSpeed;
+        }
+        else
+        {
+            //  Set the animation to walk and decrease our movespeed
+            moveSpeed = walkSpeed;
+        }
 
         //  Check if there is movement
         if (dir.magnitude >= 0.1f)
