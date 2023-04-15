@@ -45,11 +45,13 @@ public class PlayerController : MonoBehaviour
         {
             //  Set the animation to run and increase movespeed
             moveSpeed = runSpeed;
+            animator.SetBool("Running", true);
         }
         else
         {
             //  Set the animation to walk and decrease our movespeed
             moveSpeed = walkSpeed;
+            animator.SetBool("Running", false);
         }
 
         //  Check if there is movement
