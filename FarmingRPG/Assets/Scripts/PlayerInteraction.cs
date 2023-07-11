@@ -34,6 +34,9 @@ public class PlayerInteraction : MonoBehaviour
     /// </summary>
     void OnInteractableHit(RaycastHit hit)
     {
-        Debug.Log(hit);
+        Collider other = hit.collider;
+        
+        //  Showing message
+        Debug.Log(other.tag);
     }
 }
